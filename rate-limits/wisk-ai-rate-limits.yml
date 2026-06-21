@@ -1,0 +1,64 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: WISK
+providerId: wisk-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Inventory
+- Restaurant
+- Bar
+- Hospitality
+- POS Integration
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  WISK does not publish a public, self-serve developer portal or documented API
+  rate limits. The programmatic surface is partner-gated (Public Sales upload for
+  POS providers) and plan-gated (customer API access on the Premium tier). Any
+  throttling, request quotas, or sales-upload frequency limits would be governed
+  by WISK's partner integration agreement rather than published self-serve
+  limits. No specific rate-limit values are reconciled in this artifact because
+  none are publicly documented.
+notes: >-
+  Verify any request quotas, sales-upload cadence, or throttling during the
+  partner onboarding / API enablement process with WISK directly. Plan-level
+  product limits (e.g., monthly AI-processed invoice counts and SKU caps) are
+  captured in the plans artifact, not here.
+sources:
+- https://help.wisk.ai/en/articles/5071983-integrating-with-wisk-for-pos-providers
+- https://www.wisk.ai/pos
+- https://www.wisk.ai/price
+responseCodes:
+  throttled: see provider documentation
+limits:
+- name: Public Sales Upload Frequency
+  scope: partner
+  metric: requests
+  limit: see provider documentation
+  notes: >-
+    Sales data is commonly pushed on a daily cadence (or via daily sales-report
+    email when no API is available); no published per-minute or per-day request
+    limit. Reconciled false.
+- name: Customer API Access
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: >-
+    Available on the Premium plan; no public rate-limit values published.
+    Reconciled false.
+policies:
+- name: Partner-Governed Limits
+  description: >-
+    Any throttling or quota behavior is set through the WISK partner
+    integration agreement rather than a public self-serve policy.
+- name: Backoff Strategy
+  description: >-
+    Standard practice - implement exponential backoff with jitter and honor any
+    Retry-After header - is recommended pending documented behavior.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,118 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: WISK
+providerId: wisk-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Inventory
+- Restaurant
+- Bar
+- Hospitality
+- Cost Management
+- POS Integration
+- FinOps
+- FOCUS
+description: >-
+  FinOps view of WISK spend. WISK bills as a per-location SaaS subscription
+  (Essentials, Professional, Premium) on quarterly or annual terms with annual
+  savings, plus one-time implementation/setup fees, optional human-review
+  invoice packs, and food add-on modules. WISK is not a usage-metered API
+  product; programmatic API access is bundled into the Premium tier rather than
+  billed per call. POS integration is included at no extra cost. Cost drivers are
+  therefore seat/location subscriptions and plan tier rather than API request
+  volume.
+notes: >-
+  Plan prices and pack rates change; verify against the WISK pricing page during
+  reconciliation. No per-request API metering is published, so API-call meters
+  are not applicable.
+sources:
+- https://www.wisk.ai/price
+- https://help.wisk.ai/en/articles/4606093-what-s-the-cost-pricing-of-a-wisk-subscription
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: WISK
+serviceCategory: Management and Governance
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Quarterly or Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: WISK
+  ServiceCategory: Management and Governance
+  ProviderName: WISK
+  PublisherName: WISK
+  InvoiceIssuerName: WISK
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: location_subscription
+  description: Per-location monthly subscription for the selected plan tier.
+  unit: locations
+  aggregation: sum
+  dimensions:
+  - account
+  - location
+  - plan
+- name: implementation_fee
+  description: One-time setup/implementation fee per plan tier and per location.
+  unit: fees
+  aggregation: sum
+  dimensions:
+  - account
+  - location
+  - plan
+- name: ai_processed_invoices
+  description: AI-processed supplier invoices per month, capped by plan tier.
+  unit: invoices
+  aggregation: sum
+  dimensions:
+  - account
+  - location
+- name: human_review_invoice_packs
+  description: Optional human-reviewed invoice packs (auto-renewing) for beverage and food.
+  unit: packs
+  aggregation: sum
+  dimensions:
+  - account
+  - pack
+- name: food_addon_subscription
+  description: Optional food module add-on subscription (requires Professional/Premium).
+  unit: locations
+  aggregation: sum
+  dimensions:
+  - account
+  - location
+principles:
+- name: Visibility
+  description: >-
+    Track WISK spend per location and plan tier; reconcile subscription invoices,
+    implementation fees, and any human-review/food packs.
+- name: Allocation
+  description: >-
+    Map per-location subscriptions to venues / cost centers; tag multi-location
+    groups to their operating units.
+- name: Optimization
+  description: >-
+    Right-size the plan tier to SKU count and invoice volume; only step up to
+    Premium when custom reporting / API access is genuinely needed; choose annual
+    billing for savings.
+- name: Accountability
+  description: >-
+    Assign an owner per venue; review plan tier and invoice-pack consumption
+    against budget each cycle.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

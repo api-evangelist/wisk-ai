@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: WISK API
+  description: >-
+    WISK is a bar, restaurant, and hospitality inventory and cost-management
+    platform (items/inventory, venues, supplier invoices, POS integration). As
+    of this catalog date WISK does not publish a public, self-serve developer
+    portal, a public base URL, or an official OpenAPI specification. The only
+    publicly documented programmatic surface is a partner-gated "Public Sales
+    upload" flow for POS providers to push sales data into WISK customer
+    accounts, plus customer API access offered on the Premium plan. Because no
+    endpoints, base URL, or authentication scheme are publicly published, no
+    paths are modeled here to avoid fabrication. See the documented integration
+    fields (POS code or item name, quantity sold, net sales) and the partner
+    process referenced below.
+  termsOfService: https://www.wisk.ai/
+  contact:
+    name: WISK Partnerships
+    url: https://www.wisk.ai/pos
+  version: '0.0.0'
+  x-api-availability: >-
+    Partner-gated and plan-gated. POS providers contact WISK partnerships to
+    integrate via the Public Sales upload flow; customer API access is offered
+    on the Premium plan. No public base URL, endpoints, or OpenAPI are
+    published.
+  x-documented-sales-upload-fields:
+    - name: pos_code
+      description: Unique POS identifier code for an item (or item name as fallback).
+    - name: item_name
+      description: Name of the sold item.
+    - name: quantity_sold
+      description: Quantity of the item sold.
+    - name: net_sales
+      description: Net sales amount for the item.
+  x-references:
+    - https://www.wisk.ai/pos
+    - https://help.wisk.ai/en/articles/5071983-integrating-with-wisk-for-pos-providers
+    - https://help.wisk.ai/
+paths: {}

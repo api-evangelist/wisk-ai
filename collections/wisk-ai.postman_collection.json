@@ -1,0 +1,51 @@
+{
+  "info": {
+    "name": "WISK API",
+    "description": "WISK is a bar/restaurant/hospitality inventory and cost-management platform. WISK does not publish a public, self-serve developer portal, a public base URL, or an official OpenAPI specification. The only publicly documented programmatic surface is a partner-gated Public Sales upload flow for POS providers to push sales data into WISK customer accounts; customer API access is offered on the Premium plan. This collection documents that surface honestly - no base URL, endpoints, or authentication are fabricated. The {{baseUrl}} variable is left empty pending values obtained through WISK's partner integration / Premium API enablement.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POS Integration (Partner)",
+      "description": "Partner-gated Public Sales upload. POS providers contact WISK partnerships to obtain the actual endpoint, base URL, and authentication. Documented data fields: POS code (or item name), quantity sold, net sales. Request below is a non-authoritative template; the real path/URL is not publicly published.",
+      "item": [
+        {
+          "name": "Public Sales Upload (template - not publicly documented)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}",
+              "host": [
+                "{{baseUrl}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sales\": [\n    {\n      \"pos_code\": \"\",\n      \"item_name\": \"\",\n      \"quantity_sold\": 0,\n      \"net_sales\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Template only. WISK's Public Sales upload endpoint URL and authentication are provided through the partner integration process and are not publicly published. Fields shown (pos_code/item_name, quantity_sold, net_sales) are the documented sales-data requirements."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "",
+      "description": "Not publicly published by WISK; obtained via partner integration / Premium API enablement."
+    }
+  ]
+}

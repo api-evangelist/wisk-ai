@@ -1,0 +1,152 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: WISK
+providerId: wisk-ai
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Inventory
+- Restaurant
+- Bar
+- Hospitality
+- Cost Management
+- POS Integration
+- Plans
+description: >-
+  WISK is sold as a per-location SaaS subscription (billed quarterly or
+  annually, with annual savings), not as a usage-metered API product. Beverage
+  inventory tiers (Essentials, Professional, Premium) scale by SKU count,
+  AI-processed invoices per month, users, and support. Programmatic API access
+  is bundled into the top Premium tier ("custom reporting & API access"); it is
+  not sold as a standalone metered API. Implementation/setup fees and optional
+  human-review invoice packs and food add-ons apply. POS integration is included
+  at no extra cost across plans. Prices below are as published on the WISK
+  pricing page and may change.
+notes: >-
+  API access is a Premium-tier feature, not a separately metered API plan. Add-on
+  packs and food modules omitted except where they affect API/cost framing.
+  Verify current prices on the WISK pricing page during reconciliation.
+sources:
+- https://www.wisk.ai/price
+- https://help.wisk.ai/en/articles/4606093-what-s-the-cost-pricing-of-a-wisk-subscription
+plans:
+- id: wisk-essentials
+  name: Essentials (Self-Serve)
+  type: subscription
+  description: >-
+    Entry beverage inventory tier with mobile barcode scanning, 200K+ bottle
+    database, up to 300 SKUs, 50 AI-processed invoices/month, recipe costing,
+    POS integration, and up to 3 users. No API access at this tier.
+  entries:
+  - label: Essentials Subscription
+    name: essentials
+    type: flat
+    metric: location
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $189/month per location (billed annually) + $299 guided setup
+    userMultiplied: false
+  elements:
+  - name: Inventory & Items
+  - name: POS Integration
+  - name: Invoice Scanning (50/mo)
+- id: wisk-professional
+  name: Professional (Assisted)
+  type: subscription
+  description: >-
+    Most popular beverage tier; everything in Essentials plus up to 1,000 SKUs,
+    100 AI-processed invoices/month, transfers between areas, actual vs.
+    theoretical variance reports, up to 15 users, dedicated onboarding, and
+    quarterly business reviews. No API access at this tier.
+  entries:
+  - label: Professional Subscription
+    name: professional
+    type: flat
+    metric: location
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $249/month per location (billed annually) + $750 implementation
+    userMultiplied: false
+  elements:
+  - name: Inventory & Items
+  - name: Venues
+  - name: POS Integration
+  - name: Variance Reports
+  - name: Invoice Scanning (100/mo)
+- id: wisk-premium
+  name: Premium (White-Glove)
+  type: subscription
+  description: >-
+    Top beverage tier; everything in Professional plus unlimited SKUs, 200
+    AI-processed invoices/month, 100 human-reviewed invoices/month, profit
+    protection reports, custom reporting, unlimited users, a dedicated success
+    manager, and customer API access.
+  entries:
+  - label: Premium Subscription
+    name: premium
+    type: flat
+    metric: location
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $499/month per location (billed annually) + $1,500 implementation
+    userMultiplied: false
+  elements:
+  - name: Inventory & Items
+  - name: Venues
+  - name: Invoices
+  - name: Custom Reporting & API Access
+  - name: POS Integration
+- id: wisk-pos-partner
+  name: POS Provider Integration (Partner)
+  type: partner
+  description: >-
+    Partner-gated Public Sales upload integration for POS providers to push
+    sales data into WISK customer accounts (or have WISK pull from the
+    provider's Sales/Product APIs, or ingest a daily sales-report email). No
+    listed price; established via WISK partnerships. POS integration carries no
+    additional cost to WISK customers.
+  entries:
+  - label: POS Provider Integration
+    name: pos_partner
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact WISK partnerships
+    userMultiplied: false
+  elements:
+  - name: Public Sales Upload
+  - name: Sales Data Pull
+- id: wisk-custom
+  name: Custom / Enterprise
+  type: enterprise
+  description: >-
+    Custom pricing for hotels, multi-location groups, franchises, and QSR
+    operations, available on request.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Multi-Location
+  - name: Custom Reporting & API Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

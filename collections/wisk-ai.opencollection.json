@@ -1,0 +1,34 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WISK API",
+    "version": "0.0.0",
+    "description": "WISK is a bar/restaurant/hospitality inventory and cost-management platform. No public, self-serve developer portal, base URL, or official OpenAPI is published. The only publicly documented programmatic surface is a partner-gated Public Sales upload flow for POS providers; customer API access is offered on the Premium plan. This collection documents that surface honestly without fabricating a base URL, endpoints, or authentication."
+  },
+  "items": [
+    {
+      "info": {
+        "name": "POS Integration (Partner)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Public Sales Upload (template - not publicly documented)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"sales\": [\n    {\n      \"pos_code\": \"\",\n      \"item_name\": \"\",\n      \"quantity_sold\": 0,\n      \"net_sales\": 0\n    }\n  ]\n}"
+            }
+          },
+          "docs": "Partner-gated Public Sales upload. Template only - WISK's endpoint URL and authentication are provided through the partner integration process and are not publicly published. Documented sales-data fields: pos_code (or item_name), quantity_sold, net_sales. POS providers contact WISK partnerships to begin."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

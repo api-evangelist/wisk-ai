@@ -1,0 +1,89 @@
+aid: wisk-ai
+name: WISK
+review:
+  question: Does WISK expose a documented, public, self-serve developer API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  apiAvailability: partner-gated-and-plan-gated
+findings:
+  summary: |
+    WISK is a SaaS-first bar/restaurant/hospitality inventory and
+    cost-management platform. It does not publish a public, self-serve
+    developer portal, a public API base URL, or an official OpenAPI
+    specification. The only publicly documented programmatic surface is a
+    partner-gated "Public Sales upload" flow that lets POS providers push sales
+    data into WISK customer accounts; WISK can alternatively pull from a POS
+    provider's Sales and Product/Menu APIs, or ingest an automated daily
+    sales-report email. Customer-facing API access is listed only as a feature
+    of the top Premium plan ("custom reporting & API access"). Inventory/items,
+    venues, and invoices are real product capabilities surfaced in the WISK app
+    and platform, but they are not published as self-serve developer APIs. No
+    public webhook/event-subscription API is documented.
+  apiSurface:
+  - name: Public Sales upload (POS providers)
+    status: documented
+    access: partner-gated
+    note: >-
+      Partners contact WISK partnerships to integrate; supporting documentation
+      is a "Public Sales upload" guide. Documented data fields - POS code or
+      item name, quantity sold, net sales.
+  - name: Customer API access
+    status: mentioned
+    access: plan-gated
+    note: Listed as a Premium-plan feature ("custom reporting & API access"); no public docs.
+  - name: Inventory / Items
+    status: product-capability
+    access: not-public-api
+    note: Exists in product/apps; not published as a self-serve developer API.
+  - name: Venues
+    status: product-capability
+    access: not-public-api
+    note: Per-location organization in the platform; not a self-serve developer API.
+  - name: Invoices
+    status: product-capability
+    access: not-public-api
+    note: AI invoice scanning/reconciliation in product; not a self-serve developer API.
+  - name: Webhooks
+    status: not-documented
+    access: none
+    note: No public, documented webhook/event-subscription surface as of the review date.
+  baseURL:
+    documented: false
+    note: No public API base URL is published by WISK.
+  authentication:
+    documented: false
+    note: No public authentication scheme is published; access is arranged via partnership / Premium plan.
+  openapi:
+    documented: false
+    note: No official OpenAPI specification is published; an accurate paths-empty stub is provided in this repo.
+sources:
+- url: https://www.wisk.ai/
+  type: Website
+  note: Product overview - inventory management for bars/restaurants/hotels; integrates with 60+ POS.
+- url: https://www.wisk.ai/pos
+  type: Documentation
+  note: Lists 50+/60+ integrated POS partners; no developer portal, API, or webhooks mentioned.
+- url: https://help.wisk.ai/en/articles/5071983-integrating-with-wisk-for-pos-providers
+  type: Documentation
+  note: Describes partner integration - WISK pulls from POS Sales/Product APIs or accepts pushed sales data via a Public Sales upload doc; partner-gated.
+- url: https://www.wisk.ai/price
+  type: Documentation
+  note: Premium plan includes "custom reporting & API access"; lower tiers do not include API access.
+- url: https://help.wisk.ai/en/articles/4606093-what-s-the-cost-pricing-of-a-wisk-subscription
+  type: Documentation
+  note: Subscription pricing details for WISK plans.
+actions:
+  apisYmlUpdated: true
+  openapiStubCreated: true
+  reason: |
+    Because no public base URL, endpoints, or authentication are published,
+    the OpenAPI document was authored with paths: {} and an accurate
+    description plus x-api-availability metadata rather than fabricated
+    operations. The apis.yml documents the real, partner/plan-gated surface
+    (Inventory/Items, Venues, Invoices, POS Integration, Webhooks) with honest
+    descriptions, and the Webhooks entry is reconciled false because no public
+    webhook API exists.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
