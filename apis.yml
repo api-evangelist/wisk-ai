@@ -103,6 +103,8 @@ apis:
     partners is arranged through WISK's partner integration process rather than a
     self-serve webhooks API. Documented here for completeness and reconciled false.
 common:
+- type: DomainSecurity
+  url: security/wisk-ai-domain-security.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/wisk
 - type: Website
