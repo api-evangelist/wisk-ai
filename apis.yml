@@ -9,7 +9,19 @@ description: WISK is a bar, restaurant, and hospitality inventory and cost-manag
   Sales upload API lets POS providers and partners push sales data into WISK, and
   customer API access is offered on the top (Premium) plan. There is no public,
   self-serve developer portal or published OpenAPI as of this catalog date.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Paid
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wisk-ai.png
 tags:
 - Inventory
 - Restaurant
