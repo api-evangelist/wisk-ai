@@ -1,0 +1,14 @@
+{
+  "provider": "wisk-ai",
+  "sources": [
+    "wisk-ai-openapi.yml"
+  ],
+  "outputs": [],
+  "archived": [
+    "archived wisk-ai-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
