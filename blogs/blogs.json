@@ -1,0 +1,22 @@
+{
+  "repo": "wisk",
+  "feeds": [
+    {
+      "source": "https://help.wisk.ai/en/feed.xml",
+      "feed_url": "https://help.wisk.ai/en/feed.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://help.wisk.ai/en/",
+      "feed_url": "https://help.wisk.ai/en/feed.xml",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 31,
+  "fetched": "2026-08-06T14:08:46Z",
+  "agent_pulled": "2026-07-04"
+}

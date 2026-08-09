@@ -2,13 +2,12 @@ aid: wisk-ai
 url: https://raw.githubusercontent.com/api-evangelist/wisk-ai/refs/heads/main/apis.yml
 name: WISK
 kind: company
-description: WISK is a bar, restaurant, and hospitality inventory and cost-management
-  platform that tracks items, counts inventory across venues, scans and reconciles
-  supplier invoices, and integrates with 60+ POS systems to compare theoretical vs.
-  actual usage. WISK's programmatic surface is partner-gated - a documented Public
-  Sales upload API lets POS providers and partners push sales data into WISK, and
-  customer API access is offered on the top (Premium) plan. There is no public,
-  self-serve developer portal or published OpenAPI as of this catalog date.
+description: WISK is a bar, restaurant, and hospitality inventory and cost-management platform that tracks
+  items, counts inventory across venues, scans and reconciles supplier invoices, and integrates with 60+
+  POS systems to compare theoretical vs. actual usage. WISK's programmatic surface is partner-gated -
+  a documented Public Sales upload API lets POS providers and partners push sales data into WISK, and
+  customer API access is offered on the top (Premium) plan. There is no public, self-serve developer portal
+  or published OpenAPI as of this catalog date.
 accessModel:
   pricing: paid
   onboarding: unknown
@@ -30,7 +29,7 @@ tags:
 - Cost Management
 - POS Integration
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-08-08'
 specificationVersion: '0.19'
 apis:
 - aid: wisk-ai:wisk-ai-inventory-items-api
@@ -46,10 +45,9 @@ apis:
     type: Documentation
   - url: openapi/wisk-ai-openapi.yml
     type: OpenAPI
-  description: Tracks bottles, ingredients, and SKUs with counts, par levels, and
-    variance across the venue's item catalog. Exposed in the WISK product and apps;
-    not published as a public, self-serve developer API. Customer API access is
-    available on the Premium plan.
+  description: Tracks bottles, ingredients, and SKUs with counts, par levels, and variance across the
+    venue's item catalog. Exposed in the WISK product and apps; not published as a public, self-serve
+    developer API. Customer API access is available on the Premium plan.
 - aid: wisk-ai:wisk-ai-venues-api
   name: WISK Venues API
   tags:
@@ -63,9 +61,8 @@ apis:
     type: Documentation
   - url: openapi/wisk-ai-openapi.yml
     type: OpenAPI
-  description: Organizes inventory, users, and reporting per venue (location) for
-    single sites and multi-location groups. Surfaced in the WISK platform; not
-    published as a public, self-serve developer API.
+  description: Organizes inventory, users, and reporting per venue (location) for single sites and multi-location
+    groups. Surfaced in the WISK platform; not published as a public, self-serve developer API.
 - aid: wisk-ai:wisk-ai-invoices-api
   name: WISK Invoices API
   tags:
@@ -79,9 +76,9 @@ apis:
     type: Documentation
   - url: openapi/wisk-ai-openapi.yml
     type: OpenAPI
-  description: Captures, AI-processes, and reconciles supplier invoices against
-    purchases and pricing to track cost of goods. Available in the WISK product;
-    not published as a public, self-serve developer API.
+  description: Captures, AI-processes, and reconciles supplier invoices against purchases and pricing
+    to track cost of goods. Available in the WISK product; not published as a public, self-serve developer
+    API.
 - aid: wisk-ai:wisk-ai-pos-integration-api
   name: WISK POS Integration (Public Sales Upload) API
   tags:
@@ -95,11 +92,10 @@ apis:
     type: Documentation
   - url: openapi/wisk-ai-openapi.yml
     type: OpenAPI
-  description: Partner-gated integration for POS providers to push sales data (POS
-    code or item name, quantity sold, net sales) into WISK customer accounts via a
-    documented Public Sales upload flow. WISK can alternatively pull from a POS
-    provider's Sales and Product/Menu APIs, or ingest a daily sales report email.
-    POS providers contact WISK partnerships to begin.
+  description: Partner-gated integration for POS providers to push sales data (POS code or item name,
+    quantity sold, net sales) into WISK customer accounts via a documented Public Sales upload flow. WISK
+    can alternatively pull from a POS provider's Sales and Product/Menu APIs, or ingest a daily sales
+    report email. POS providers contact WISK partnerships to begin.
 - aid: wisk-ai:wisk-ai-webhooks
   name: WISK Webhooks
   tags:
@@ -110,10 +106,9 @@ apis:
   properties:
   - url: https://help.wisk.ai/en/articles/5071983-integrating-with-wisk-for-pos-providers
     type: Documentation
-  description: No public, documented webhook or event-subscription surface is
-    published by WISK as of this catalog date. Event-driven exchange with POS
-    partners is arranged through WISK's partner integration process rather than a
-    self-serve webhooks API. Documented here for completeness and reconciled false.
+  description: No public, documented webhook or event-subscription surface is published by WISK as of
+    this catalog date. Event-driven exchange with POS partners is arranged through WISK's partner integration
+    process rather than a self-serve webhooks API. Documented here for completeness and reconciled false.
 common:
 - type: DomainSecurity
   url: security/wisk-ai-domain-security.yml
@@ -129,6 +124,64 @@ common:
   url: rate-limits/wisk-ai-rate-limits.yml
 - type: FinOps
   url: finops/wisk-ai-finops.yml
+- type: AgenticAccess
+  url: agentic-access/wisk-ai-agentic-access.yml
+- type: Authentication
+  url: authentication/wisk-ai-authentication.yml
+- type: Signup
+  url: https://www.wisk.ai/demo
+- type: Login
+  url: https://web.wisk.ai/signin
+- type: Pricing
+  url: https://www.wisk.ai/price
+- type: Support
+  url: https://help.wisk.ai/en/
+- type: Blog
+  url: https://www.wisk.ai/blog
+- type: X
+  url: https://twitter.com/WISK_ai
+- type: SpectralRules
+  url: rules/wisk-ai-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/wisk-ai-vocabulary.yaml
+- type: Features
+  data:
+  - name: Sales Upload API
+    description: Push point-of-sale sales lines into a WISK venue account via a single POST to /public/sales/upload
+      accepting a JSON array of line items.
+  - name: POS Pull Integrations
+    description: WISK can pull from a partner's own Sales API and Product/Menu API to ingest sales and
+      item data into customer accounts.
+  - name: CSV/XLS Email Fallback
+    description: For POS systems without an API, automated daily sales or product-mix reports can be emailed
+      to WISK in XLS or CSV format.
+  - name: Inventory and Cost Tracking
+    description: Inventory counts, invoicing, purchasing, recipe costing, and cost-of-goods tracking across
+      bars, restaurants, and hotels.
+  url: ''
+- type: UseCases
+  data:
+  - name: POS Provider Integration
+    description: A POS platform integrates with WISK so its venues' sales data flows into WISK for inventory
+      reconciliation.
+  - name: Daily Sales Reconciliation
+    description: Push daily sales lines so WISK can deplete inventory against actual POS sales and surface
+      variance.
+  - name: Multi-Location Inventory
+    description: Operators manage inventory, invoices, and cost of goods across multiple venues from one
+      platform.
+  url: ''
+- type: Integrations
+  data:
+  - name: Direct POS Integrations
+    description: 60+ POS systems including Toast, Square, Clover, Lightspeed, Revel, TouchBistro, Heartland,
+      Aldelo, Arryved, and many more.
+  - name: Omnivore Universal API
+    description: Several POS systems integrate through Omnivore's Universal API, including Aloha, Brink,
+      Oracle Hospitality (Micros/Simphony), POSitouch, and Doshii-connected systems.
+  url: ''
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-merged-from:
+- wisk

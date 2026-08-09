@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wisk-sales-upload-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: venueIdHeader
+  type: apiKey
+  in: header
+  parameter: X-Wisk-Venue-Id
+  description: Venue unique identifier provisioned by WISK for the partner. The public guide
+    instructs partners to "ask WISK to give the venue unique identifier" and supply it in the
+    request header. The exact header name is assigned by WISK per integration; X-Wisk-Venue-Id
+    is used here as a representative placeholder.
+  sources:
+  - openapi/wisk-sales-upload-openapi.yml

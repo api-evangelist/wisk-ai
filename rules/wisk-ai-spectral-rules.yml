@@ -1,0 +1,235 @@
+# wisk — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on wisk.ai
+#   - operation-security-required: 1/1 ops declare per-op security
+#   - merge: kept 26 existing, added 3 measured, upgraded 0
+#   - added: servers-expected-domain, operation-security-required, no-empty-descriptions
+extends:
+  - spectral:oas
+rules:
+  info-title-required:
+    description: API must have a title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+  info-title-wisk-prefix:
+    description: API title should reference WISK.
+    severity: info
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: (?i)wisk
+  info-description-required:
+    description: API must have a description of reasonable length.
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: truthy
+  info-version-required:
+    description: API must declare a version.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+  openapi-version-3:
+    description: Specs must use OpenAPI 3.0.x.
+    severity: warn
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: ^3\.0\.
+  servers-defined:
+    description: At least one server must be defined.
+    severity: error
+    given: $.servers
+    then:
+      function: length
+      functionOptions:
+        min: 1
+  servers-https:
+    description: Server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: ^https://
+  paths-lowercase:
+    description: Path segments must be lower-case (kebab-case), no upper-case.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z0-9/_{}-]+$
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: .+/$
+  operation-operationId-required:
+    description: Every operation must have an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  operation-operationId-camelcase:
+    description: operationId should be camelCase.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z][a-zA-Z0-9]+$
+  operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+  operation-summary-title-case:
+    description: Operation summaries should be Title Case.
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[A-Z]
+  operation-description-required:
+    description: Every operation must have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+  operation-tags-required:
+    description: Every operation must be tagged.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+  tag-global-defined:
+    description: Global tags array should be defined with descriptions.
+    severity: info
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+  tag-title-case:
+    description: Tag names should be Title Case.
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*( [A-Z][A-Za-z0-9]*)*$
+  request-body-json:
+    description: Request bodies should offer application/json.
+    severity: warn
+    given: $.paths[*][post,put,patch].requestBody.content
+    then:
+      field: application/json
+      function: truthy
+  post-requires-request-body:
+    description: POST operations should declare a request body.
+    severity: warn
+    given: $.paths[*].post
+    then:
+      field: requestBody
+      function: truthy
+  response-success-defined:
+    description: Operations must define a 2xx success response.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '200'
+      function: truthy
+  response-description-required:
+    description: Every response must have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses[*]
+    then:
+      field: description
+      function: truthy
+  schema-property-snake-case:
+    description: Schema property names should be snake_case.
+    severity: warn
+    given: $.components.schemas[*].properties[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z][a-z0-9_]*$
+  schema-property-type-defined:
+    description: Schema properties must declare a type or $ref.
+    severity: warn
+    given: $.components.schemas[*].properties[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+          - required:
+            - type
+          - required:
+            - $ref
+  schema-property-description:
+    description: Schema properties should have descriptions.
+    severity: info
+    given: $.components.schemas[*].properties[*]
+    then:
+      field: description
+      function: truthy
+  security-schemes-defined:
+    description: Security schemes must be defined under components.
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+  security-apikey-in-header:
+    description: API key security schemes must be placed in the header.
+    severity: warn
+    given: $.components.securitySchemes[?(@.type=='apiKey')]
+    then:
+      field: in
+      function: pattern
+      functionOptions:
+        match: ^header$
+  servers-expected-domain:
+    description: Server URLs should be on the wisk.ai domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: wisk\.ai
+  operation-security-required:
+    description: Every operation should declare its security requirements.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: security
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
