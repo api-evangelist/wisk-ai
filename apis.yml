@@ -43,7 +43,7 @@ apis:
   properties:
   - url: https://help.wisk.ai/en/collections/2572511-new-user-guide
     type: Documentation
-  - url: openapi/wisk-ai-openapi.yml
+  - url: openapi/_original/wisk-ai-openapi.yml
     type: OpenAPI
   description: Tracks bottles, ingredients, and SKUs with counts, par levels, and variance across the
     venue's item catalog. Exposed in the WISK product and apps; not published as a public, self-serve
@@ -59,7 +59,7 @@ apis:
   properties:
   - url: https://help.wisk.ai/en/collections/2572511-new-user-guide
     type: Documentation
-  - url: openapi/wisk-ai-openapi.yml
+  - url: openapi/_original/wisk-ai-openapi.yml
     type: OpenAPI
   description: Organizes inventory, users, and reporting per venue (location) for single sites and multi-location
     groups. Surfaced in the WISK platform; not published as a public, self-serve developer API.
@@ -74,7 +74,7 @@ apis:
   properties:
   - url: https://help.wisk.ai/en/collections/2572511-new-user-guide
     type: Documentation
-  - url: openapi/wisk-ai-openapi.yml
+  - url: openapi/_original/wisk-ai-openapi.yml
     type: OpenAPI
   description: Captures, AI-processes, and reconciles supplier invoices against purchases and pricing
     to track cost of goods. Available in the WISK product; not published as a public, self-serve developer
@@ -90,7 +90,7 @@ apis:
   properties:
   - url: https://help.wisk.ai/en/articles/5071983-integrating-with-wisk-for-pos-providers
     type: Documentation
-  - url: openapi/wisk-ai-openapi.yml
+  - url: openapi/_original/wisk-ai-openapi.yml
     type: OpenAPI
   description: Partner-gated integration for POS providers to push sales data (POS code or item name,
     quantity sold, net sales) into WISK customer accounts via a documented Public Sales upload flow. WISK
