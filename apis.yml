@@ -36,6 +36,10 @@ apis:
   name: WISK Inventory & Items API
   tags:
   - Inventory
+  - Item
+  - Stock
+  tags_raw:
+  - Inventory
   - Items
   - Stock
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -99,6 +103,9 @@ apis:
 - aid: wisk-ai:wisk-ai-webhooks
   name: WISK Webhooks
   tags:
+  - Webhook
+  - Event
+  tags_raw:
   - Webhooks
   - Events
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
