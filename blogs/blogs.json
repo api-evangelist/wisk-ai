@@ -1,5 +1,5 @@
 {
-  "repo": "wisk",
+  "repo": "wisk-ai",
   "feeds": [
     {
       "source": "https://help.wisk.ai/en/feed.xml",
@@ -17,6 +17,6 @@
     }
   ],
   "post_count": 31,
-  "fetched": "2026-08-15T12:11:08Z",
+  "fetched": "2026-08-22T20:20:02Z",
   "agent_pulled": "2026-07-04"
 }
