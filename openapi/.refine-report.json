@@ -1,14 +1,17 @@
 {
   "provider": "wisk-ai",
   "sources": [
-    "wisk-ai-openapi.yml"
+    "wisk-ai-sales-api-openapi.yml"
   ],
-  "outputs": [],
-  "archived": [
-    "archived wisk-ai-openapi.yml"
+  "outputs": [
+    "wisk-ai-sales-api-openapi.yml"
   ],
+  "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "wisk-ai-sales-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+1 apis, 2 total)"
+  ],
   "skipped": []
 }
