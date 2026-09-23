@@ -1,7 +1,8 @@
 {
   "provider": "wisk-ai",
   "sources": [
-    "wisk-ai-sales-api-openapi.yml"
+    "_original/wisk-ai-openapi.yml",
+    "_ae-authored/wisk-ai-sales-upload-openapi.yml"
   ],
   "outputs": [
     "wisk-ai-sales-api-openapi.yml"
@@ -10,8 +11,12 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "wisk-ai-sales-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: written (+1 apis, 2 total)"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "wisk-ai-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "wisk-ai-sales-upload-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "wisk-ai-sales-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

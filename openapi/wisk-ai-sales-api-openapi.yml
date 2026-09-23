@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: WISK Public Upload Sales API
   version: '1.0'
-  description: 'WISK''s public sales-upload API lets POS providers and integration partners push sales line items into a customer''s WISK account so that sales can be reconciled against inventory. A partner submits an array of sales lines via a single POST operation. WISK provisions each partner with a venue unique identifier that is supplied in the request header to route the data to the correct venue/account.
-
-
-    This specification was generated from WISK''s public documentation. The request path, JSON body structure, and field definitions are taken verbatim from the public "Public Sales upload" guide; the exact request header name is provisioned per-partner by WISK and is therefore modeled generically.'
+  description: WISK's public sales-upload API lets POS providers and integration partners push sales line items into a customer's WISK account so that sales can be reconciled against inventory.
   contact:
     name: WISK Integrations Team
     url: https://help.wisk.ai/en/articles/5071983-integrating-with-wisk-for-pos-providers
