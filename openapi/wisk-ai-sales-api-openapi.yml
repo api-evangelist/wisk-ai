@@ -73,6 +73,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SalesUpload:
+      title: Sales Upload
+      type: array
+      description: The POST body is a JSON array of sales line items.
+      items:
+        $ref: '#/components/schemas/SalesLine'
     SalesLine:
       title: Sales Line
       type: object
@@ -114,12 +120,6 @@ components:
           format: double
           description: The total for the line in the venue's local currency.
           example: 60
-    SalesUpload:
-      title: Sales Upload
-      type: array
-      description: The POST body is a JSON array of sales line items.
-      items:
-        $ref: '#/components/schemas/SalesLine'
   securitySchemes:
     venueIdHeader:
       type: apiKey
